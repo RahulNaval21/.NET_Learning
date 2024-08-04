@@ -5,14 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API;
 
-[ApiController]
-[Route("api/[controller]")]
 
-public class UsersController(DataContext context) : ControllerBase
+
+public class UsersController(DataContext context) : BaseApiController
 {
 
     [HttpGet]
-    public async Task< ActionResult<IEnumerable<AppUser>>> GetUsers()
+    public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
         var users = await context.Users.ToListAsync();
 
@@ -26,11 +25,12 @@ public class UsersController(DataContext context) : ControllerBase
     {
         var user = await context.Users.FindAsync(id);
 
-        if(user == null){
+        if (user == null)
+        {
             return NotFound();
         }
 
-        return  user;
-        
+        return user;
+
     }
 }
