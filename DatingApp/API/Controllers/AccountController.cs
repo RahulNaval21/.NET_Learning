@@ -12,7 +12,7 @@ public class AccountController(DataContext context) : BaseApiController
     [HttpPost("register")] // account/register
     public async Task<ActionResult<AppUser>> Register(RegisterDTO registerDTO)
     {
-        if(await UserExists(registerDTO.Username)) return BadRequest("Username is already taken! Choose another one");
+        if(await UserExists(registerDTO.Username)) return BadRequest("Username is already taken! Choose another one"); 
 
         using var hmac = new HMACSHA512();
 
