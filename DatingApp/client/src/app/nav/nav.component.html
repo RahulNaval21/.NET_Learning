@@ -14,9 +14,9 @@
             <a class="nav-link">Messages</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" placeholder="Username">
-          <input class="form-control me-2" placeholder="Password" type="papssword">
+        <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
+          <input name="username" [(ngModel)]="model.username" class="form-control me-2" placeholder="Username">
+          <input name="password" [(ngModel)]="model.password" class="form-control me-2" placeholder="Password" type="papssword">
           <button class="btn btn-outline-success" type="submit">Login</button>
         </form>
       </div>
